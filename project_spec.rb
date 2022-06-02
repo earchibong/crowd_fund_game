@@ -18,7 +18,7 @@ describe Project do
   end
   
   it "has a string representation" do
-    @project.to_s.should == "Project ABC has $1000 in funding towards a goal of $5000. $4000 to reach the goal."
+    @project.to_s.should == "Project ABC has $1000 in funding towards a goal of $5000."
   end
   
   it "increases funds by 25 when funds are added" do

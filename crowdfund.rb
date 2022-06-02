@@ -13,4 +13,5 @@ projects.add_project(project2)
 projects.add_project(project3)
 projects.add_project(project4)
 projects.add_project(project5)
-projects.request_funding
+projects.request_funding(2)
+projects.funding_stats
