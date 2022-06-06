@@ -8,6 +8,6 @@ module FundingRound
     number_rolled = die.roll
     number_rolled.even? ? project.add_funds : project.remove_funds
     pledge = PledgePool.random
-    puts "#{project.name} got a #{pledge.name} pledge worth $#{pledge.amount}"
+    project.received_pledge(pledge)
   end
 end

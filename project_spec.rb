@@ -18,7 +18,10 @@ describe Project do
   end
   
   it "has a string representation" do
-    @project.to_s.should == "Project ABC has $1000 in funding towards a goal of $5000."
+    @project.received_pledge(Pledge.new(:bronze, 50))
+    @project.received_pledge(Pledge.new(:bronze, 50))
+
+    @project.to_s.should == "Project ABC has $1100 in funding towards a goal of $5000."
   end
   
   it "increases funds by 25 when funds are added" do
@@ -59,5 +62,25 @@ describe Project do
     it "is under-funded" do
       @project.should_not be_fully_funded
     end
+  end
+  
+  it "computes pledges as the sum of all pledges" do
+    @project.pledges.should == 0
+
+    @project.received_pledge(Pledge.new(:silver, 75))
+    @project.pledges.should == 75
+
+    @project.received_pledge(Pledge.new(:gold, 100))
+    @project.pledges.should == 175
+
+    @project.received_pledge(Pledge.new(:gold, 100))
+    @project.pledges.should == 275
+  end
+  
+  it "computes total funds as the sum of a projects funding and pledges" do
+    @project.received_pledge(Pledge.new(:gold, 100))
+    @project.received_pledge(Pledge.new(:gold, 100))
+    
+    @project.total_funds.should == 1200
   end
 end

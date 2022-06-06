@@ -1,38 +1,55 @@
+require_relative 'pledge_pool'
+
 class Project
     attr_reader :funding, :target
     attr_accessor :name
-    
+ 
     def initialize(name, funding = 0, target)
         @name = name
         @funding = funding
         @target = target
+        @received_pledge = Hash.new(0)
     end
-    
+ 
     def time
         current_time = Time.new
         current_time.strftime('%I:%M %p')
     end
-    
+ 
     def funds_needed
         @target - @funding
     end
-    
+ 
     def to_s
-        "Project #{@name} has $#{@funding} in funding towards a goal of $#{@target}."
+        "Project #{@name} has $#{total_funds} in funding towards a goal of $#{@target}."
     end
-    
+ 
     def add_funds
        @funding += 25
        puts "Project #{@name} got more funds!"
     end
-    
+ 
     def remove_funds
         @funding -= 15
         puts "Project #{@name} lost some funds!"
     end
-    
+ 
     def fully_funded?
         @funding >= @target
+    end
+ 
+    def received_pledge(pledge)
+        @received_pledge[pledge.name] += pledge.amount
+        puts "#{@name} received a #{pledge.name} pledge worth $#{pledge.amount}."
+        puts "#{@name}'s pledges: #{@received_pledge}"
+    end
+
+    def pledges
+      @received_pledge.values.reduce(0, :+)
+    end
+ 
+    def total_funds
+      @funding + pledges
     end
 end
 

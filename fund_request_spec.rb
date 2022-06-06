@@ -23,5 +23,16 @@ describe Fund_request do
     @fund_request.request_funding(2)
     @project.funding.should == @funding - 15 * 2
   end
+  
+  it "assigns a pledge for money during a project's turn" do
+    fund = Fund_request.new('vc_friendly_startup_projects')
+    project = Project.new('ABC', 3400, 10000)
+
+    fund.add_project(project)
+
+    fund.request_funding(1)
+
+    project.pledges.should_not be_zero
+  end 
     
 end
