@@ -51,6 +51,17 @@ class Project
     def total_funds
       @funding + pledges
     end
+    
+    def each_received_pledge
+      @received_pledge.each do |name, amount|
+        yield Pledge.new(name, amount)
+      end
+    end
+    
+    def self.from_csv(string)
+      name, funding, target = string.split(',')
+      project = Project.new(name, Integer(funding), Integer(target))
+    end
 end
 
 project1 = Project.new('ABC', 3400, 10000)

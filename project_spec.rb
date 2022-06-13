@@ -83,4 +83,34 @@ describe Project do
     
     @project.total_funds.should == 1200
   end
+  
+  it "yields each received pledges and its total amount" do
+  @project.received_pledge(Pledge.new(:gold, 100))
+  @project.received_pledge(Pledge.new(:gold, 100))
+  @project.received_pledge(Pledge.new(:silver, 75))
+  @project.received_pledge(Pledge.new(:bronze, 50))
+  @project.received_pledge(Pledge.new(:bronze, 50))
+  @project.received_pledge(Pledge.new(:bronze, 50))
+  @project.received_pledge(Pledge.new(:bronze, 50))
+  @project.received_pledge(Pledge.new(:bronze, 50))
+
+  yielded = []
+  @project.each_received_pledge do |pledge|
+    yielded << pledge
+  end
+
+  yielded.should == [
+    Pledge.new(:gold, 200),
+    Pledge.new(:silver, 75),
+    Pledge.new(:bronze, 250)
+    ]
+  end
+  
+  it "can be created from a CSV string" do
+    project = Project.from_csv("ABC, 500, 5000")
+    
+    project.name.should == 'ABC'
+    project.funding.should == 500
+    project.target.should == 5000
+  end
 end

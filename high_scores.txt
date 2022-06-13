@@ -1,0 +1,4 @@
+vc_friendly_startup_projects High Scores:
+Project1............: 15
+Project2............: 25
+Project3............: 75
