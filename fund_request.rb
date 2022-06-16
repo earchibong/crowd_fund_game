@@ -17,16 +17,18 @@ class Fund_request
   end
   
   def load_projects(from_file)
+=begin
     CSV.foreach(from_file) do |row|
       project = Project.new(row[0], row[1].to_i)
       add_project(project)
     end
+=end
 
-    #File.readlines(from_file).each do |line|
-      #name, funding, target = line.split(',')
-      #project = Project.new(name, Integer(funding), Integer(target))
-      #add_project(Project.from_csv(line))
-    #end
+    File.readlines(from_file).each do |line|
+      name, funding, target = line.split(',')
+      project = Project.new(name, Integer(funding), Integer(target))
+      add_project(Project.from_csv(line))
+    end
   end
   
   def high_score_entry(project)

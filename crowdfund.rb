@@ -1,22 +1,29 @@
 require_relative 'project'
 require_relative 'fund_request'
+require_relative 'grant_project'
+require_relative 'matching_funds'
 
 =begin
-project1 = Project.new('ABC', 3400, 10000)
-project2 = Project.new('EFG', 1400, 5700)
-project3 = Project.new('KLM', 4000)
-project4 = Project.new('XYZ', 500, 4500)
-project5 = Project.new('OPQ', 2000, 8000)
+project1 = Project.new("Project ABC", 1000, 5000)
+project2 = Project.new("Project LMN", 500, 3000)
+project3 = Project.new("Project XYZ", 25, 75)
 =end
+grant1 = GrantProject.new('TBA', 150, 1500)
+match1 = MatchingFunds.new('CVA', 0, 200)
+
 vc_fund = Fund_request.new('vc_friendly_startup_projects')
-#vc_fund.add_project(project1)
-#vc_fund.add_project(project2)
-#vc_fund.add_project(project3)
-#vc_fund.add_project(project4)
-#vc_fund.add_project(project5)
-#vc_fund.request_funding(4)
-#vc_fund.funding_stats
 vc_fund.load_projects(ARGV.shift || 'projects.csv')
+=begin
+vc_fund.add_project(project1)
+vc_fund.add_project(project2)
+vc_fund.add_project(project3)
+=end
+vc_fund.add_project(grant1)
+vc_fund.add_project(match1)
+=begin
+projects.request_funding(4)
+projects.print_results
+=end
 
 loop do
   puts "how many funding rounds would you like? (enter a number or 'q' to quit)"
