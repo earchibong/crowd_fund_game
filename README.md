@@ -1,9 +1,12 @@
 
 Creating a crowdfund game using Object Oriented Programming in Ruby.
-Funds are added or removed from each project with the roll of a dice.
-Each project can also receive pledges and donations
-Player input on funding rounds
-Player output to print out funding stats
+<ul>
+    <li>Funds are added or removed from each project with the roll of a dice.</li>
+    <li>Each project can also receive pledges and donations</li>
+    <li>Player input on funding rounds.</li>
+    <li>Player output to print out funding stats</li>
+</ul>
+<br>
 
 Themes covered in this project include:
 <ul>
