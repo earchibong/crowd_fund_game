@@ -1,7 +1,11 @@
 
 Creating a crowdfund game using Object Oriented Programming in Ruby.
+Funds are added or removed from each project with the roll of a dice.
+Each project can also receive pledges and donations
+Player input on funding rounds
+Player output to print out funding stats
 
-Themes of the course include:
+Themes covered in this project include:
 <ul>
     <li>Classes</li>
     <li>Attributes</li>
@@ -12,6 +16,7 @@ Themes of the course include:
     <li>Blocks & Custom Iterators</li>
     <li>Symbols & Structs</li>
     <li>Arrays & Hashes</li>
+    <li>Modules</li>
     <li>Keyboard input and output</li>
     <li>Read and write from files</li>
     <li>Inheritance</li>

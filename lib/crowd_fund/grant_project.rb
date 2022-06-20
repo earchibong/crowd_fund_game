@@ -1,9 +1,11 @@
 require_relative 'project'
 
-class GrantProject < Project
-  def remove_funds
-    @funding -= 0
-    puts "#{@name} has not lost or gained any new funds"
+module CrowdFund
+  class GrantProject < Project
+    def remove_funds
+      @funding -= 0
+      puts "#{@name} has not lost or gained any new funds"
+    end
   end
 end
 
