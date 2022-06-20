@@ -25,3 +25,5 @@ Themes covered in this project include:
     <li>Inheritance</li>
     <li>Mixins</li>
 </ul>
+<br>
+Run the game in the command line using: ruby bin/crowdfund.rb
